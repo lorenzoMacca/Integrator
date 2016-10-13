@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>img/icon/Custom-Icon-Design-Flatastic-9-Tests.ico</file>
+  </qresource>
+</RCC>

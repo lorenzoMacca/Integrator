@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>IntegratorClass</class>
+ <widget class="QMainWindow" name="IntegratorClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>863</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Integrator</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>863</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuActivity">
+    <property name="title">
+     <string>Activity</string>
+    </property>
+    <addaction name="actionMerge"/>
+    <addaction name="actionDeadline"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuActivity"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionMerge"/>
+   <addaction name="actionDeadline"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionMerge">
+   <property name="icon">
+    <iconset resource="integrator.qrc">
+     <normaloff>:/icon/img/icon/Custom-Icon-Design-Flatastic-9-Tests.ico</normaloff>:/icon/img/icon/Custom-Icon-Design-Flatastic-9-Tests.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Merge</string>
+   </property>
+  </action>
+  <action name="actionDeadline">
+   <property name="icon">
+    <iconset resource="integrator.qrc">
+     <normaloff>:/icon/img/icon/Custom-Icon-Design-Flatastic-9-Tests.ico</normaloff>:/icon/img/icon/Custom-Icon-Design-Flatastic-9-Tests.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Deadline</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="integrator.qrc"/>
+ </resources>
+ <connections/>
+</ui>
