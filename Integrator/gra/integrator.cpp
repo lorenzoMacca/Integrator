@@ -10,8 +10,10 @@ Integrator::Integrator(QWidget *parent, Qt::WindowFlags flags)
 	this->ui.widget->setLayout(layout);
 
 	//TO_TEST
-	this->w = new JiraTickets(this);
-	this->ui.widget->layout()->addWidget(this->w);
+    //this->w = new JiraTickets(this);
+    //this->ui.widget->layout()->addWidget(this->w);
+    this->w = new UIDefineSTP(this);
+    this->ui.widget->layout()->addWidget(this->w);
 	//TO_TEST
 
 	connect(this->ui.actionMerge, SIGNAL(triggered()), this, SLOT(handleMergeAction()));

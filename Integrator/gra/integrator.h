@@ -9,6 +9,7 @@
 #include "pasa_merge_widget.h"
 #include "test_qmv_01.h"
 #include "jiratickets.h"
+#include "gra/ui_stp/ui_define_stp.h"
 
 class Integrator : public QMainWindow
 {

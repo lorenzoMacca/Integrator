@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     gra/test_qmv_01.cpp \
     gra/ticket.cpp \
     gra/jiratickets.cpp \
-    gra/errticket.cpp
+    gra/errticket.cpp \
+    gra/ui_stp/ui_define_stp.cpp
 
 HEADERS  +=  gra/integrator.h \
     gra/mainintegratorwidget.h \
@@ -31,10 +32,12 @@ HEADERS  +=  gra/integrator.h \
     gra/test_qmv_01.h \
     gra/ticket.h \
     gra/jiratickets.h \
-    gra/errticket.h
+    gra/errticket.h \
+    gra/ui_stp/ui_define_stp.h
 
 FORMS    +=  gra/integrator.ui \
-    gra/test.ui
+    gra/test.ui \
+    gra/ui_stp/ui_define_stp.ui
 
 RESOURCES += \
     gra/integrator.qrc
