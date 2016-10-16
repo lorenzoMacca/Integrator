@@ -16,9 +16,40 @@ UIDefineSTP::UIDefineSTP(Data *d, QWidget *parent) :
     this->ui->m_ui_start_date->setDate(QDate::currentDate());
     this->ui->m_ui_due_date->setDate(QDate::currentDate());
     this->ui->m_ui_merge_date->setDate(QDate::currentDate());
+
+    connect(this->ui->m_next_button, SIGNAL(clicked()),
+            this, SLOT(nextButtonClicketSlot()));
+    connect(this, SIGNAL(integrationPlanInitializedAfterCallToNextButton()),
+            this, SLOT(next()));
 }
 
 UIDefineSTP::~UIDefineSTP()
 {
     delete ui;
 }
+
+void UIDefineSTP::nextButtonClicketSlot()
+{
+    //save info stp
+    if(this->m_data->integrationPlan() != NULL)
+    {
+        this->m_data->integrationPlan()->setCw(this->ui->m_ui_cw_2->text());
+        this->m_data->integrationPlan()->setStartDate(this->ui->m_ui_start_date->date());
+        this->m_data->integrationPlan()->setDueDate(this->ui->m_ui_due_date->date());
+        this->m_data->integrationPlan()->setMergeDate(this->ui->m_ui_merge_date->date());
+        this->m_data->integrationPlan()->setNoMerge(!this->ui->m_isMerge->isChecked());
+        this->m_data->integrationPlan()->setSubProject(this->ui->m_ui_sub_project->currentText());
+        this->m_data->integrationPlan()->setAssignees(this->ui->m_ui_assignee->currentText());
+        this->m_data->integrationPlan()->setPic(this->ui->m_ui_pic->currentText());
+        this->m_data->integrationPlan()->setStpType(this->ui->m_ui_buildtype->currentText());
+        emit integrationPlanInitializedAfterCallToNextButton();
+    }
+}
+
+void UIDefineSTP::next()
+{
+    QMessageBox::information(this, "Next Button clicked", "The button was clicked");
+    qDebug() << this->m_data->integrationPlan()->toString();
+}
+
+
