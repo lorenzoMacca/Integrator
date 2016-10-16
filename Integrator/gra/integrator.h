@@ -16,7 +16,7 @@ class Integrator : public QMainWindow
 	Q_OBJECT
 
 public:
-    Integrator(QWidget *parent = 0, Qt::WindowFlags flags = 0);
+    Integrator(Data *d, QWidget *parent = 0, Qt::WindowFlags flags = 0);
 	~Integrator();
 
 public slots:

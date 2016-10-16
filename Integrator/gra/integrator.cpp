@@ -1,6 +1,6 @@
 #include "integrator.h"
 
-Integrator::Integrator(QWidget *parent, Qt::WindowFlags flags)
+Integrator::Integrator(Data *d, QWidget *parent, Qt::WindowFlags flags)
 	: QMainWindow(parent, flags)
 {
 	ui.setupUi(this);
@@ -12,9 +12,9 @@ Integrator::Integrator(QWidget *parent, Qt::WindowFlags flags)
 	//TO_TEST
     //this->w = new JiraTickets(this);
     //this->ui.widget->layout()->addWidget(this->w);
-    this->w = new UIDefineSTP(this);
+    this->w = new UIDefineSTP(d, this);
     this->ui.widget->layout()->addWidget(this->w);
-	//TO_TEST
+    //TO_TEST
 
 	connect(this->ui.actionMerge, SIGNAL(triggered()), this, SLOT(handleMergeAction()));
 	connect(this->ui.actionDeadline, SIGNAL(triggered()), this, SLOT(handleHomePageAction()));
