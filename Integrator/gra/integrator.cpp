@@ -12,17 +12,26 @@ Integrator::Integrator(Data *d, QWidget *parent, Qt::WindowFlags flags)
 	//TO_TEST
     //this->w = new JiraTickets(this);
     //this->ui.widget->layout()->addWidget(this->w);
+	this->m_data = d;
     this->w = new UIDefineSTP(d, this);
     this->ui.widget->layout()->addWidget(this->w);
     //TO_TEST
 
 	connect(this->ui.actionMerge, SIGNAL(triggered()), this, SLOT(handleMergeAction()));
 	connect(this->ui.actionDeadline, SIGNAL(triggered()), this, SLOT(handleHomePageAction()));
+	connect(this->ui.actionSTP_Creator, SIGNAL(triggered()), this, SLOT(handleSTPCreatorAction()));
 }
 
 Integrator::~Integrator()
 {
 
+}
+
+void Integrator::handleSTPCreatorAction()
+{
+	this->handleHomePageAction();
+	this->w = new UIDefineSTP(this->m_data, this);
+	this->ui.widget->layout()->addWidget(this->w);
 }
 
 /**

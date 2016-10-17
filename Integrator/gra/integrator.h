@@ -22,10 +22,12 @@ public:
 public slots:
 	void handleMergeAction();
 	void handleHomePageAction();
+	void handleSTPCreatorAction();
 
 private:
 	Ui::IntegratorClass ui;
 	QWidget* w;
+	Data* m_data;
 };
 
 #endif // INTEGRATOR_H

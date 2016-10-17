@@ -60,6 +60,7 @@
    </attribute>
    <addaction name="actionMerge"/>
    <addaction name="actionDeadline"/>
+   <addaction name="actionSTP_Creator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionMerge">
@@ -78,6 +79,18 @@
    </property>
    <property name="text">
     <string>Deadline</string>
+   </property>
+  </action>
+  <action name="actionSTP_Creator">
+   <property name="icon">
+    <iconset resource="integrator.qrc">
+     <normaloff>:/icon/img/icon/Custom-Icon-Design-Flatastic-9-Tests.ico</normaloff>:/icon/img/icon/Custom-Icon-Design-Flatastic-9-Tests.ico</iconset>
+   </property>
+   <property name="text">
+    <string>STP_Creator</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;STP Creator&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
  </widget>
