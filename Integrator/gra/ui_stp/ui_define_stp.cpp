@@ -16,6 +16,8 @@ UIDefineSTP::UIDefineSTP(Data *d, QWidget *parent) :
     this->ui->m_ui_start_date->setDate(QDate::currentDate());
     this->ui->m_ui_due_date->setDate(QDate::currentDate());
     this->ui->m_ui_merge_date->setDate(QDate::currentDate());
+	this->ui->m_ui_security_level->addItems(this->m_data->settingData()->securityLevels());
+	
 
     connect(this->ui->m_next_button, SIGNAL(clicked()),
             this, SLOT(nextButtonClicketSlot()));
@@ -42,6 +44,7 @@ void UIDefineSTP::nextButtonClicketSlot()
         this->m_data->integrationPlan()->setAssignees(this->ui->m_ui_assignee->currentText());
         this->m_data->integrationPlan()->setPic(this->ui->m_ui_pic->currentText());
         this->m_data->integrationPlan()->setStpType(this->ui->m_ui_buildtype->currentText());
+		this->m_data->integrationPlan()->setSecurityLevel(this->ui->m_ui_security_level->currentText());
         emit integrationPlanInitializedAfterCallToNextButton();
     }
 }

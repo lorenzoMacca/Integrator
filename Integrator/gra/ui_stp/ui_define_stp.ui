@@ -40,6 +40,20 @@
    </item>
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout_2">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Due date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Sub Project</string>
+       </property>
+      </widget>
+     </item>
      <item row="6" column="1">
       <widget class="QComboBox" name="m_ui_assignee"/>
      </item>
@@ -76,7 +90,7 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="1">
+     <item row="10" column="1">
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -119,13 +133,6 @@
      <item row="0" column="1">
       <widget class="QLineEdit" name="m_ui_cw_2"/>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Due date</string>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="1">
       <widget class="QDateEdit" name="m_ui_due_date"/>
      </item>
@@ -142,22 +149,8 @@
      <item row="3" column="1">
       <widget class="QDateEdit" name="m_ui_merge_date"/>
      </item>
-     <item row="3" column="2">
-      <widget class="QCheckBox" name="m_isMerge">
-       <property name="text">
-        <string>The merge is done?</string>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="1">
       <widget class="QSpinBox" name="m_ui_num_build"/>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Sub Project</string>
-       </property>
-      </widget>
      </item>
      <item row="6" column="0">
       <widget class="QLabel" name="label_6">
@@ -175,6 +168,23 @@
      </item>
      <item row="8" column="1">
       <widget class="QComboBox" name="m_ui_buildtype"/>
+     </item>
+     <item row="3" column="2">
+      <widget class="QCheckBox" name="m_isMerge">
+       <property name="text">
+        <string>The merge is done?</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QComboBox" name="m_ui_security_level"/>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Security Level</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
