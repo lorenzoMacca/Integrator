@@ -17,12 +17,16 @@ UIDefineSTP::UIDefineSTP(Data *d, QWidget *parent) :
     this->ui->m_ui_due_date->setDate(QDate::currentDate());
     this->ui->m_ui_merge_date->setDate(QDate::currentDate());
 	this->ui->m_ui_security_level->addItems(this->m_data->settingData()->securityLevels());
+    this->ui->m_ui_merge_date->setDisabled(false);
+    this->ui->m_isMerge->setChecked(true);
 	
 
     connect(this->ui->m_next_button, SIGNAL(clicked()),
             this, SLOT(nextButtonClicketSlot()));
     connect(this, SIGNAL(integrationPlanInitializedAfterCallToNextButton()),
             this, SLOT(next()));
+    connect(this->ui->m_isMerge, SIGNAL(stateChanged(int)),
+            this, SLOT(handleIsMergeCheckBox(int)));
 }
 
 UIDefineSTP::~UIDefineSTP()
@@ -53,6 +57,17 @@ void UIDefineSTP::next()
 {
     QMessageBox::information(this, "Next Button clicked", "The button was clicked");
     qDebug() << this->m_data->integrationPlan()->toString();
+}
+
+void UIDefineSTP::handleIsMergeCheckBox(int state)
+{
+    if( state == Qt::Checked )
+    {
+        this->ui->m_ui_merge_date->setDisabled(false);
+    }else if( state == Qt::Unchecked )
+    {
+        this->ui->m_ui_merge_date->setDisabled(true);
+    }
 }
 
 

@@ -24,6 +24,7 @@ public:
 public slots:
     void nextButtonClicketSlot();
     void next();
+    void handleIsMergeCheckBox(int);
 
 signals:
     void integrationPlanInitializedAfterCallToNextButton();
