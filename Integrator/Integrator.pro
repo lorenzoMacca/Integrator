@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     gra/ticket.cpp \
     gra/jiratickets.cpp \
     gra/errticket.cpp \
-    gra/ui_stp/ui_define_stp.cpp
+    gra/ui_stp/ui_define_stp.cpp \
+    gra/ui_stp/build/builddefine.cpp \
+    gra/ui_stp/build/definebuildwidget.cpp
 
 HEADERS  +=  gra/integrator.h \
     gra/mainintegratorwidget.h \
@@ -33,11 +35,16 @@ HEADERS  +=  gra/integrator.h \
     gra/ticket.h \
     gra/jiratickets.h \
     gra/errticket.h \
-    gra/ui_stp/ui_define_stp.h
+    gra/ui_stp/ui_define_stp.h \
+    gra/ui_stp/uidefinebuild.h \
+    gra/ui_stp/build/builddefine.h \
+    gra/ui_stp/build/definebuildwidget.h
 
 FORMS    +=  gra/integrator.ui \
     gra/test.ui \
-    gra/ui_stp/ui_define_stp.ui
+    gra/ui_stp/ui_define_stp.ui \
+    gra/ui_stp/build/builddefine.ui \
+    gra/ui_stp/build/definebuildwidget.ui
 
 RESOURCES += \
     gra/integrator.qrc

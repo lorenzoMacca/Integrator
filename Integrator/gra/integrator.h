@@ -10,6 +10,7 @@
 #include "test_qmv_01.h"
 #include "jiratickets.h"
 #include "gra/ui_stp/ui_define_stp.h"
+#include "gra/ui_stp/build/builddefine.h"
 
 class Integrator : public QMainWindow
 {
