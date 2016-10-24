@@ -14,7 +14,7 @@ class BuildDefine : public QWidget
     Q_OBJECT
 
 public:
-    explicit BuildDefine(int buildNumber, IntegrationPlan *i, QWidget *parent = 0);
+    explicit BuildDefine(Data *d, int buildNumber, IntegrationPlan *i, QWidget *parent = 0);
     ~BuildDefine();
 
 private:

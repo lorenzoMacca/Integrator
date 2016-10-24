@@ -14,7 +14,9 @@ Integrator::Integrator(Data *d, QWidget *parent, Qt::WindowFlags flags)
     //this->ui.widget->layout()->addWidget(this->w);
 	this->m_data = d;
    // this->w = new UIDefineSTP(d, this);
-    this->w = new BuildDefine(4, this->m_data->integrationPlan(), this);
+    this->m_data->integrationPlan()->setStartDate(QDate(2016,10,24));
+    this->m_data->integrationPlan()->setDueDate(QDate(2016,10,28));
+    this->w = new BuildDefine(this->m_data, 4, this->m_data->integrationPlan(), this);
     this->ui.widget->layout()->addWidget(this->w);
     //TO_TEST
 

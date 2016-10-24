@@ -1,7 +1,7 @@
 #include "builddefine.h"
 #include "ui_builddefine.h"
 
-BuildDefine::BuildDefine(int buildNumber, IntegrationPlan *i, QWidget *parent) :
+BuildDefine::BuildDefine(Data *d, int buildNumber, IntegrationPlan *i, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::BuildDefine)
 {
@@ -16,7 +16,7 @@ BuildDefine::BuildDefine(int buildNumber, IntegrationPlan *i, QWidget *parent) :
 
     for( int i=0; i<this->m_buildNumber; i++ )
     {
-        this->ui->tabWidget->addTab(new DefineBuildWidget(this->ui->tabWidget), "BUILD_"+QString::number(i));
+        this->ui->tabWidget->addTab(new DefineBuildWidget(d, this->ui->tabWidget), "BUILD_"+QString::number(i));
     }
 
 
