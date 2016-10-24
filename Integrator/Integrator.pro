@@ -36,7 +36,6 @@ HEADERS  +=  gra/integrator.h \
     gra/jiratickets.h \
     gra/errticket.h \
     gra/ui_stp/ui_define_stp.h \
-    gra/ui_stp/uidefinebuild.h \
     gra/ui_stp/build/builddefine.h \
     gra/ui_stp/build/definebuildwidget.h
 
