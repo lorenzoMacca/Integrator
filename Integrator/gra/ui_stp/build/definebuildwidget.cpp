@@ -21,17 +21,22 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
         this->ui->m_ui_delivery_date->addItem(currentDate.toString(), currentDate);
     }
 
-    QList<ComponentSoftware> compnents = d->settingData()->getComponentsSoftware();
-    QListIterator<ComponentSoftware> iterComponents(compnents);
+    QListIterator<UIComponentSoftware> iterComponents(this->getUIComponentSoftwares());
 
     QGridLayout *layout = new QGridLayout(this);
     int i=0;
+
+    layout->addWidget(new QLabel("Component", this), i, 0);
+    layout->addWidget(new QLabel("Version", this), i, 1);
+    layout->addWidget(new QLabel("Description", this), i, 2);
+    i++;
+
     while( iterComponents.hasNext())
     {
-        ComponentSoftware c = iterComponents.next();
-        layout->addWidget(new QLabel(c.name(), this), i, 0);
-        layout->addWidget(new QLineEdit(c.version(), this), i, 1);
-        layout->addWidget(new QLineEdit(c.description(), this), i, 2);
+        UIComponentSoftware c = iterComponents.next();
+        layout->addWidget(c.nameLabel(), i, 0);
+        layout->addWidget(c.versionLineEdit(), i, 1);
+        layout->addWidget(c.descriptionLineEdit(), i, 2);
         i++;
     }
 
@@ -48,4 +53,17 @@ DefineBuildWidget::~DefineBuildWidget()
 void DefineBuildWidget::handleBuildNameChanged(QString n)
 {
     emit buildNameChanged(this->m_index, n);
+}
+
+QList<UIComponentSoftware> DefineBuildWidget::getUIComponentSoftwares()
+{
+    QList<UIComponentSoftware> ui_component_softwares;
+    QList<ComponentSoftware> compnents = this->m_data->settingData()->getComponentsSoftware();
+    QListIterator<ComponentSoftware> iterComponents(compnents);
+    while( iterComponents.hasNext())
+    {
+         ComponentSoftware c = iterComponents.next();
+         ui_component_softwares.append(UIComponentSoftware(c.name(), c.version(), c.description(), this));
+    }
+    return ui_component_softwares;
 }

@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     gra/errticket.cpp \
     gra/ui_stp/ui_define_stp.cpp \
     gra/ui_stp/build/builddefine.cpp \
-    gra/ui_stp/build/definebuildwidget.cpp
+    gra/ui_stp/build/definebuildwidget.cpp \
+    gra/ui_stp/build/Util/UIComponentSoftware.cpp
 
 HEADERS  +=  gra/integrator.h \
     gra/mainintegratorwidget.h \
@@ -37,7 +38,8 @@ HEADERS  +=  gra/integrator.h \
     gra/errticket.h \
     gra/ui_stp/ui_define_stp.h \
     gra/ui_stp/build/builddefine.h \
-    gra/ui_stp/build/definebuildwidget.h
+    gra/ui_stp/build/definebuildwidget.h \
+    gra/ui_stp/build/Util/UIComponentSoftware.h
 
 FORMS    +=  gra/integrator.ui \
     gra/test.ui \
