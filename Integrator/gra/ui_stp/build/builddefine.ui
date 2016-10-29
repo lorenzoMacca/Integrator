@@ -50,7 +50,7 @@
    <item row="1" column="0">
     <layout class="QGridLayout" name="gridLayout_4">
      <item row="2" column="2">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="m_next_button">
        <property name="text">
         <string>next</string>
        </property>
@@ -70,7 +70,7 @@
       </spacer>
      </item>
      <item row="2" column="1">
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="m_back_button">
        <property name="text">
         <string>back</string>
        </property>
