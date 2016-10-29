@@ -8,16 +8,17 @@ Integrator::Integrator(Data *d, QWidget *parent, Qt::WindowFlags flags)
 	this->w = 0;
 	QVBoxLayout *layout = new QVBoxLayout;
 	this->ui.widget->setLayout(layout);
+    this->m_data = d;
 
 	//TO_TEST
     //this->w = new JiraTickets(this);
     //this->ui.widget->layout()->addWidget(this->w);
-	this->m_data = d;
+
    // this->w = new UIDefineSTP(d, this);
-    this->m_data->integrationPlan()->setStartDate(QDate(2016,10,24));
+    /*this->m_data->integrationPlan()->setStartDate(QDate(2016,10,24));
     this->m_data->integrationPlan()->setDueDate(QDate(2016,10,28));
     this->w = new BuildDefine(this->m_data, 4, this->m_data->integrationPlan(), this);
-    this->ui.widget->layout()->addWidget(this->w);
+    this->ui.widget->layout()->addWidget(this->w);*/
     //TO_TEST
 
 	connect(this->ui.actionMerge, SIGNAL(triggered()), this, SLOT(handleMergeAction()));
@@ -35,6 +36,7 @@ void Integrator::handleSTPCreatorAction()
 	this->handleHomePageAction();
 	this->w = new UIDefineSTP(this->m_data, this);
 	this->ui.widget->layout()->addWidget(this->w);
+    connect(this->w,SIGNAL(nextButtonPressed(int)), this, SLOT(handleNextButtonFromDefineSPT(int)));
 }
 
 /**
@@ -56,4 +58,13 @@ void Integrator::handleHomePageAction()
 		delete this->w;
 		this->w = 0;
 	}
+}
+
+void Integrator::handleNextButtonFromDefineSPT(int i)
+{
+    this->handleHomePageAction();
+    this->m_data->integrationPlan()->setStartDate(QDate(2016,10,24));
+    this->m_data->integrationPlan()->setDueDate(QDate(2016,10,28));
+    this->w = new BuildDefine(this->m_data, i, this->m_data->integrationPlan(), this);
+    this->ui.widget->layout()->addWidget(this->w);
 }

@@ -24,6 +24,7 @@ public slots:
 	void handleMergeAction();
 	void handleHomePageAction();
 	void handleSTPCreatorAction();
+    void handleNextButtonFromDefineSPT(int i);
 
 private:
 	Ui::IntegratorClass ui;

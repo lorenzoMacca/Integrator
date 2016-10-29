@@ -28,6 +28,7 @@ public slots:
 
 signals:
     void integrationPlanInitializedAfterCallToNextButton();
+    void nextButtonPressed(int i);
 
 private:
     Ui::Form *ui;

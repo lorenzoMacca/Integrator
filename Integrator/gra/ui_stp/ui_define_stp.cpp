@@ -57,6 +57,7 @@ void UIDefineSTP::next()
 {
     QMessageBox::information(this, "Next Button clicked", "The button was clicked");
     qDebug() << this->m_data->integrationPlan()->toString();
+    emit nextButtonPressed(this->ui->m_ui_num_build->text().toInt());
 }
 
 void UIDefineSTP::handleIsMergeCheckBox(int state)
