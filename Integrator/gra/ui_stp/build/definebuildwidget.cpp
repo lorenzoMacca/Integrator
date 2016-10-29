@@ -21,6 +21,22 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
         this->ui->m_ui_delivery_date->addItem(currentDate.toString(), currentDate);
     }
 
+    QList<ComponentSoftware> compnents = d->settingData()->getComponentsSoftware();
+    QListIterator<ComponentSoftware> iterComponents(compnents);
+
+    QGridLayout *layout = new QGridLayout(this);
+    int i=0;
+    while( iterComponents.hasNext())
+    {
+        ComponentSoftware c = iterComponents.next();
+        layout->addWidget(new QLabel(c.name(), this), i, 0);
+        layout->addWidget(new QLineEdit(c.version(), this), i, 1);
+        layout->addWidget(new QLineEdit(c.description(), this), i, 2);
+        i++;
+    }
+
+    this->ui->m_component->setLayout(layout);
+
     connect(this->ui->m_ui_build_name, SIGNAL(textEdited(QString)), this, SLOT(handleBuildNameChanged(QString)));
 }
 

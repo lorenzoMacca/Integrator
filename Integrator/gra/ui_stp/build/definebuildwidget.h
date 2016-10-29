@@ -5,6 +5,10 @@
 #include <QDate>
 #include <QList>
 #include <QListIterator>
+#include <QGridLayout>
+#include <QList>
+#include <QListIterator>
+#include "src/core/entities/component.h"
 #include "src/core/entities/build.h"
 #include "src/core/data/data.h"
 #include "src/core/util/util.h"
