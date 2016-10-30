@@ -20,7 +20,9 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
         this->ui->m_ui_delivery_date->addItem(currentDate.toString(), currentDate);
     }
 
-    QListIterator<UIComponentSoftware> iterComponents(this->getUIComponentSoftwares());
+    this->m_ui_components = this->getUIComponentSoftwares();
+
+    QListIterator<UIComponentSoftware> iterComponents(this->m_ui_components);
 
     QGridLayout *layout = new QGridLayout(this);
     int i=0;
@@ -45,6 +47,7 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
     this->ui->m_component->setLayout(layout);
 
     connect(this->ui->m_ui_build_name, SIGNAL(textEdited(QString)), this, SLOT(handleBuildNameChanged(QString)));
+    connect(this->ui->m_ui_save, SIGNAL(released()), this, SLOT(handleSaveButtonPressed()));
 }
 
 DefineBuildWidget::~DefineBuildWidget()
@@ -68,4 +71,16 @@ QList<UIComponentSoftware> DefineBuildWidget::getUIComponentSoftwares()
          ui_component_softwares.append(UIComponentSoftware(c.name(), c.version(), c.description(), 0));
     }
     return ui_component_softwares;
+}
+
+void DefineBuildWidget::handleSaveButtonPressed()
+{
+    QListIterator<UIComponentSoftware> iter(this->m_ui_components);
+    while(iter.hasNext())
+    {
+        UIComponentSoftware ui_component = iter.next();
+        qDebug() << ui_component.nameLabel()->text() + " " +
+                    ui_component.versionLineEdit()->text() + " " +
+                    ui_component.descriptionLineEdit()->text();
+    }
 }

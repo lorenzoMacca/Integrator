@@ -30,6 +30,7 @@ public:
 
 public slots:
     void handleBuildNameChanged(QString n);
+    void handleSaveButtonPressed();
 
 signals:
     void buildNameChanged(int index, QString n);
@@ -39,6 +40,7 @@ private:
     Build *m_build;
     Data *m_data;
     int m_index;
+    QList<UIComponentSoftware> m_ui_components;
 
     QList<UIComponentSoftware> getUIComponentSoftwares();
 };
