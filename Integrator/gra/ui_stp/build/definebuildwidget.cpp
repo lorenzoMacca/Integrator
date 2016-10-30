@@ -15,7 +15,6 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
     while(iter.hasNext())
     {
         QDate currentDate = iter.next();
-        qDebug() << currentDate.toString();
         this->ui->m_ui_start_date->addItem(currentDate.toString(), currentDate);
         this->ui->m_ui_upload_date->addItem(currentDate.toString(), currentDate);
         this->ui->m_ui_delivery_date->addItem(currentDate.toString(), currentDate);
@@ -26,17 +25,20 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
     QGridLayout *layout = new QGridLayout(this);
     int i=0;
 
-    layout->addWidget(new QLabel("Component", this), i, 0);
-    layout->addWidget(new QLabel("Version", this), i, 1);
-    layout->addWidget(new QLabel("Description", this), i, 2);
+    layout->addWidget(new QLabel("Is it in?", this), i, 0);
+    layout->addWidget(new QLabel("Component", this), i, 1);
+    layout->addWidget(new QLabel("Version", this), i,   2);
+    layout->addWidget(new QLabel("Description", this), i, 3);
+
     i++;
 
     while( iterComponents.hasNext())
     {
         UIComponentSoftware c = iterComponents.next();
-        layout->addWidget(c.nameLabel(), i, 0);
-        layout->addWidget(c.versionLineEdit(), i, 1);
-        layout->addWidget(c.descriptionLineEdit(), i, 2);
+        layout->addWidget(c.isInCheckBox(), i, 0);
+        layout->addWidget(c.nameLabel(), i, 1);
+        layout->addWidget(c.versionLineEdit(), i, 2);
+        layout->addWidget(c.descriptionLineEdit(), i, 3);
         i++;
     }
 
@@ -63,7 +65,7 @@ QList<UIComponentSoftware> DefineBuildWidget::getUIComponentSoftwares()
     while( iterComponents.hasNext())
     {
          ComponentSoftware c = iterComponents.next();
-         ui_component_softwares.append(UIComponentSoftware(c.name(), c.version(), c.description(), this));
+         ui_component_softwares.append(UIComponentSoftware(c.name(), c.version(), c.description(), 0));
     }
     return ui_component_softwares;
 }

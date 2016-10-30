@@ -5,6 +5,7 @@
 #include <QString>
 #include <QLabel>
 #include <QLineEdit>
+#include <QCheckBox>
 
 class UIComponentSoftware : public QWidget{
     
@@ -18,11 +19,13 @@ public:
     QLabel* nameLabel()const;
     QLineEdit* versionLineEdit()const;
     QLineEdit* descriptionLineEdit()const;
+    QCheckBox* isInCheckBox()const;
 
 private:
     QLabel *m_name_label;
     QLineEdit *m_version_line_edit;
     QLineEdit *m_description_line_edit;
+    QCheckBox *m_isIn_check_box;
 
 };
 
