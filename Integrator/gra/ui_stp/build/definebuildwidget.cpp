@@ -22,8 +22,6 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
 
     this->m_ui_components = this->getUIComponentSoftwares();
 
-    QListIterator<UIComponentSoftware> iterComponents(this->m_ui_components);
-
     QGridLayout *layout = new QGridLayout(this);
     int i=0;
 
@@ -32,16 +30,14 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
     layout->addWidget(new QLabel("Version", this), i,   2);
     layout->addWidget(new QLabel("Description", this), i, 3);
 
-    i++;
-
-    while( iterComponents.hasNext())
+	for(; i<this->m_ui_components.size();)
     {
-        UIComponentSoftware c = iterComponents.next();
-        layout->addWidget(c.isInCheckBox(), i, 0);
-        layout->addWidget(c.nameLabel(), i, 1);
-        layout->addWidget(c.versionLineEdit(), i, 2);
-        layout->addWidget(c.descriptionLineEdit(), i, 3);
-        i++;
+		int j = i+1;
+		layout->addWidget(this->m_ui_components.at(i).isInCheckBox(), j, 0);
+        layout->addWidget(this->m_ui_components.at(i).nameLabel(), j, 1);
+        layout->addWidget(this->m_ui_components.at(i).versionLineEdit(), j, 2);
+        layout->addWidget(this->m_ui_components.at(i).descriptionLineEdit(), j, 3);
+		i++;
     }
 
     this->ui->m_component->setLayout(layout);
@@ -79,8 +75,10 @@ void DefineBuildWidget::handleSaveButtonPressed()
     while(iter.hasNext())
     {
         UIComponentSoftware ui_component = iter.next();
+		bool isChecked =  ui_component.isInCheckBox()->isChecked();
         qDebug() << ui_component.nameLabel()->text() + " " +
                     ui_component.versionLineEdit()->text() + " " +
-                    ui_component.descriptionLineEdit()->text();
+                    ui_component.descriptionLineEdit()->text() + " "+
+					isChecked;
     }
 }

@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QList>
 #include <QListIterator>
+#include <QMutableListIterator>
 #include "src/core/entities/component.h"
 #include "src/core/entities/build.h"
 #include "src/core/data/data.h"
@@ -43,6 +44,7 @@ private:
     QList<UIComponentSoftware> m_ui_components;
 
     QList<UIComponentSoftware> getUIComponentSoftwares();
+	void getUIComponentSoftwaresArray();
 };
 
 #endif // DEFINEBUILDWIDGET_H

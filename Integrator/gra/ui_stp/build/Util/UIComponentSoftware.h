@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QDebug>
 
 class UIComponentSoftware : public QWidget{
     

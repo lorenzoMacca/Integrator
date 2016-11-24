@@ -6,6 +6,7 @@ UIComponentSoftware::UIComponentSoftware(QString name, QString version, QString 
     this->m_version_line_edit = new QLineEdit(version, this);
     this->m_description_line_edit = new QLineEdit(description, this);
     this->m_isIn_check_box = new QCheckBox(this);
+
 }
 
 UIComponentSoftware &UIComponentSoftware::operator=(const UIComponentSoftware &other)
