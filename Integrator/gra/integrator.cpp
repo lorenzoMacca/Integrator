@@ -63,8 +63,6 @@ void Integrator::handleHomePageAction()
 void Integrator::handleNextButtonFromDefineSPT(int i)
 {
     this->handleHomePageAction();
-    this->m_data->integrationPlan()->setStartDate(QDate(2016,10,24));
-    this->m_data->integrationPlan()->setDueDate(QDate(2016,10,28));
     this->w = new BuildDefine(this->m_data, i, this->m_data->integrationPlan(), this);
     this->ui.widget->layout()->addWidget(this->w);
 }

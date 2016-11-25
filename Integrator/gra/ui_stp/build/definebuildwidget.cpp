@@ -82,8 +82,6 @@ void DefineBuildWidget::handleSaveButtonPressed()
     this->m_data->integrationPlan()->buildsMod()[this->m_index].setUploadDay(upload_date);
     QDate delivery_date = this->ui->m_ui_delivery_date->itemData(this->ui->m_ui_delivery_date->currentIndex()).toDate();
     this->m_data->integrationPlan()->buildsMod()[this->m_index].setDeliveryDay(delivery_date);
-    //end save build info
-
     this->m_data->integrationPlan()->buildsMod()[this->m_index].componentsMod().clear();
     QListIterator<UIComponentSoftware> iter(this->m_ui_components);
     while(iter.hasNext())
@@ -96,6 +94,8 @@ void DefineBuildWidget::handleSaveButtonPressed()
             this->m_data->integrationPlan()->buildsMod()[this->m_index].addComponent(current_component_software);
         }
     }
+    //end save build info
+
     qDebug() << "Saving the following build:";
     qDebug() << "Build name: " << this->m_data->integrationPlan()->buildsMod()[this->m_index].name();
     qDebug() << "Description" << this->m_data->integrationPlan()->buildsMod()[this->m_index].description();
