@@ -14,6 +14,8 @@ BuildDefine::BuildDefine(Data *data, int buildNumber, IntegrationPlan *i, QWidge
 
     for( int i=0; i<this->m_buildNumber; i++ )
     {
+        Build b(data->integrationPlan());
+        data->integrationPlan()->addBuild(b);
         DefineBuildWidget *d = new DefineBuildWidget(i, data, this->ui->tabWidget);
         this->ui->tabWidget->addTab(d, "BUILD_"+QString::number(i));
         connect(d, SIGNAL(buildNameChanged(int, QString)), this, SLOT(handlBuildNameChange(int, QString)));
