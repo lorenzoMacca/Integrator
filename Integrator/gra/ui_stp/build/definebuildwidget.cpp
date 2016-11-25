@@ -71,14 +71,47 @@ QList<UIComponentSoftware> DefineBuildWidget::getUIComponentSoftwares()
 
 void DefineBuildWidget::handleSaveButtonPressed()
 {
+    //save build info
+    QString build_name = this->ui->m_ui_build_name->text();
+    this->m_data->integrationPlan()->buildsMod()[this->m_index].setName(build_name);
+    QString build_description = this->ui->m_ui_desription->toPlainText();
+    this->m_data->integrationPlan()->buildsMod()[this->m_index].setDescription(build_description);
+    QDate start_date = this->ui->m_ui_start_date->itemData(this->ui->m_ui_start_date->currentIndex()).toDate();
+    this->m_data->integrationPlan()->buildsMod()[this->m_index].setStartDate(start_date);
+    QDate upload_date = this->ui->m_ui_upload_date->itemData(this->ui->m_ui_upload_date->currentIndex()).toDate();
+    this->m_data->integrationPlan()->buildsMod()[this->m_index].setUploadDay(upload_date);
+    QDate delivery_date = this->ui->m_ui_delivery_date->itemData(this->ui->m_ui_delivery_date->currentIndex()).toDate();
+    this->m_data->integrationPlan()->buildsMod()[this->m_index].setDeliveryDay(delivery_date);
+    //end save build info
+
+    this->m_data->integrationPlan()->buildsMod()[this->m_index].componentsMod().clear();
     QListIterator<UIComponentSoftware> iter(this->m_ui_components);
     while(iter.hasNext())
     {
         UIComponentSoftware ui_component = iter.next();
 		bool isChecked =  ui_component.isInCheckBox()->isChecked();
-        qDebug() << ui_component.nameLabel()->text() + " " +
-                    ui_component.versionLineEdit()->text() + " " +
-                    ui_component.descriptionLineEdit()->text() + " "+
-					isChecked;
+        if(isChecked)
+        {
+            ComponentSoftware current_component_software(ui_component.nameLabel()->text(), ui_component.versionLineEdit()->text(), ui_component.descriptionLineEdit()->text(), 0);
+            this->m_data->integrationPlan()->buildsMod()[this->m_index].addComponent(current_component_software);
+        }
+    }
+    qDebug() << "Saving the following build:";
+    qDebug() << "Build name: " << this->m_data->integrationPlan()->buildsMod()[this->m_index].name();
+    qDebug() << "Description" << this->m_data->integrationPlan()->buildsMod()[this->m_index].description();
+    qDebug() << "Start date: " << this->m_data->integrationPlan()->buildsMod()[this->m_index].start_date().toString();
+    qDebug() << "Upload date: " << this->m_data->integrationPlan()->buildsMod()[this->m_index].upload_day().toString();
+    qDebug() << "Delivery date: " << this->m_data->integrationPlan()->buildsMod()[this->m_index].delivery_day().toString();
+    int numComponents = this->m_data->integrationPlan()->buildsMod()[this->m_index].components().size();
+    qDebug() << "N° components: " + QString::number(numComponents);
+    if(numComponents > 0)
+    {
+        qDebug() << "Components:";
+        QListIterator<ComponentSoftware> cp_iter(this->m_data->integrationPlan()->buildsMod()[this->m_index].components());
+        while(cp_iter.hasNext())
+        {
+            ComponentSoftware cs = cp_iter.next();
+            qDebug() << "  --> " + cs.name() + " " + cs.version() + " " + cs.description();
+        }
     }
 }

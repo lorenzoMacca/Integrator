@@ -38,7 +38,6 @@ signals:
 
 private:
     Ui::DefineBuildWidget *ui;
-    Build *m_build;
     Data *m_data;
     int m_index;
     QList<UIComponentSoftware> m_ui_components;
