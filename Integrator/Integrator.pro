@@ -54,15 +54,15 @@ DISTFILES += \
     gra/Integrator.ico \
     gra/Integrator.rc
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/release/ -lSTPCreatorLib
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/debug/ -lSTPCreatorLib
-else:unix: LIBS += -L$$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/ -lSTPCreatorLib
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/release/ -lSTPCreatorLib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/debug/ -lSTPCreatorLib
+else:unix:!macx: LIBS += -L$$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/ -lSTPCreatorLib
 
-INCLUDEPATH += $$PWD/../../trainingLib
-DEPENDPATH += $$PWD/../../trainingLib
+INCLUDEPATH += $$PWD/STPCore/lib
+DEPENDPATH += $$PWD/STPCore/lib
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/release/libSTPCreatorLib.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/debug/libSTPCreatorLib.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/release/STPCreatorLib.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/debug/STPCreatorLib.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/libSTPCreatorLib.a
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/release/libSTPCreatorLib.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/debug/libSTPCreatorLib.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/release/STPCreatorLib.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/debug/STPCreatorLib.lib
+else:unix:!macx: PRE_TARGETDEPS += $$PWD/STPCore/lib/build-STPCreatorLib-Desktop_Qt_5_6_0_MinGW_32bit-Debug/libSTPCreatorLib.a
