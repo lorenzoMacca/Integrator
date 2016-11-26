@@ -65,4 +65,16 @@ void Integrator::handleNextButtonFromDefineSPT(int i)
     this->handleHomePageAction();
     this->w = new BuildDefine(this->m_data, i, this->m_data->integrationPlan(), this);
     this->ui.widget->layout()->addWidget(this->w);
+    connect(this->w,SIGNAL(backButtonPressed()), this, SLOT(handleBackButtonFromBuildDefine()));
+    connect(this->w,SIGNAL(nextButtonPressed()), this, SLOT(handleNextButtonFromBuildDefine()));
+}
+
+void Integrator::handleBackButtonFromBuildDefine()
+{
+    this->handleSTPCreatorAction();
+}
+
+void Integrator::handleNextButtonFromBuildDefine()
+{
+    qDebug() << "handleNextButtonFromBuildDefine";
 }

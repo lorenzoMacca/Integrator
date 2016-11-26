@@ -28,6 +28,7 @@ BuildDefine::BuildDefine(Data *data, int buildNumber, IntegrationPlan *i, QWidge
     this->ui->tabWidget->removeTab(0);
 
     connect(this->ui->m_back_button, SIGNAL(released()), this, SLOT(handleBackButtonPressed()));
+    connect(this->ui->m_next_button, SIGNAL(released()), this, SLOT(handleNextButtonPressed()));
 }
 
 BuildDefine::~BuildDefine()
@@ -38,6 +39,11 @@ BuildDefine::~BuildDefine()
 void BuildDefine::handleBackButtonPressed()
 {
     emit backButtonPressed();
+}
+
+void BuildDefine::handleNextButtonPressed()
+{
+    emit nextButtonPressed();
 }
 
 void BuildDefine::handlBuildNameChange(int index, QString n)

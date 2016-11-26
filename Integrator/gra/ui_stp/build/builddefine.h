@@ -19,10 +19,12 @@ public:
 
 public slots:
     void handleBackButtonPressed();
+    void handleNextButtonPressed();
     void handlBuildNameChange(int index, QString n);
 
 signals:
     void backButtonPressed();
+    void nextButtonPressed();
 
 private:
     Ui::BuildDefine *ui;

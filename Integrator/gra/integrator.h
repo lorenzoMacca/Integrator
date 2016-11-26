@@ -25,6 +25,8 @@ public slots:
 	void handleHomePageAction();
 	void handleSTPCreatorAction();
     void handleNextButtonFromDefineSPT(int i);
+    void handleBackButtonFromBuildDefine();
+    void handleNextButtonFromBuildDefine();
 
 private:
 	Ui::IntegratorClass ui;
