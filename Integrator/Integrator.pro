@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     gra/ui_stp/ui_define_stp.cpp \
     gra/ui_stp/build/builddefine.cpp \
     gra/ui_stp/build/definebuildwidget.cpp \
-    gra/ui_stp/build/Util/UIComponentSoftware.cpp
+    gra/ui_stp/build/Util/UIComponentSoftware.cpp \
+    gra/ui_stp/jira/uijirastpinterface.cpp
 
 HEADERS  +=  gra/integrator.h \
     gra/mainintegratorwidget.h \
@@ -39,13 +40,15 @@ HEADERS  +=  gra/integrator.h \
     gra/ui_stp/ui_define_stp.h \
     gra/ui_stp/build/builddefine.h \
     gra/ui_stp/build/definebuildwidget.h \
-    gra/ui_stp/build/Util/UIComponentSoftware.h
+    gra/ui_stp/build/Util/UIComponentSoftware.h \
+    gra/ui_stp/jira/uijirastpinterface.h
 
 FORMS    +=  gra/integrator.ui \
     gra/test.ui \
     gra/ui_stp/ui_define_stp.ui \
     gra/ui_stp/build/builddefine.ui \
-    gra/ui_stp/build/definebuildwidget.ui
+    gra/ui_stp/build/definebuildwidget.ui \
+    gra/ui_stp/jira/uijirastpinterface.ui
 
 RESOURCES += \
     gra/integrator.qrc

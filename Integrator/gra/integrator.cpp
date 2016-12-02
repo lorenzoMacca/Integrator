@@ -77,4 +77,6 @@ void Integrator::handleBackButtonFromBuildDefine()
 void Integrator::handleNextButtonFromBuildDefine()
 {
     qDebug() << "handleNextButtonFromBuildDefine";
+    QMainWindow *jira_main_window = new UIJiraStpInterface(this->m_data,this);
+    jira_main_window->show();
 }
