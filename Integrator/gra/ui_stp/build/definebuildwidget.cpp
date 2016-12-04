@@ -9,6 +9,12 @@ DefineBuildWidget::DefineBuildWidget(int index, Data *d, QWidget *parent) :
     this->m_data = d;
     this->m_index = index;
 
+
+    this->ui->m_ui_build_type->addItem(Build::RELEASE);
+    this->ui->m_ui_build_type->addItem(Build::DEV_DROP);
+    this->ui->m_ui_build_type->addItem(Build::ACCEPTANCE);
+    this->ui->m_ui_build_type->addItem(Build::DRY_RUN);
+
     QUtilSTP util(this);
     QList<QDate> dates = util.getDatesBetween(this->m_data->integrationPlan()->start_date(), this->m_data->integrationPlan()->due_date());
     QListIterator<QDate> iter(dates);
@@ -82,6 +88,8 @@ void DefineBuildWidget::handleSaveButtonPressed()
     this->m_data->integrationPlan()->buildsMod()[this->m_index].setUploadDay(upload_date);
     QDate delivery_date = this->ui->m_ui_delivery_date->itemData(this->ui->m_ui_delivery_date->currentIndex()).toDate();
     this->m_data->integrationPlan()->buildsMod()[this->m_index].setDeliveryDay(delivery_date);
+    QString build_type = this->ui->m_ui_build_type->currentText();
+    this->m_data->integrationPlan()->buildsMod()[this->m_index].setBuildType(build_type);
     this->m_data->integrationPlan()->buildsMod()[this->m_index].componentsMod().clear();
     QListIterator<UIComponentSoftware> iter(this->m_ui_components);
     while(iter.hasNext())
