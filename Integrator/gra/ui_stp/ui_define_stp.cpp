@@ -89,6 +89,9 @@ void UIDefineSTP::nextButtonClicketSlot()
         this->m_data->integrationPlan()->setPic(this->ui->m_ui_pic->currentText());
         this->m_data->integrationPlan()->setStpType(this->ui->m_ui_buildtype->currentText());
 		this->m_data->integrationPlan()->setSecurityLevel(this->ui->m_ui_security_level->currentText());
+		QString summary = "SP ticket for " + this->m_data->integrationPlan()->sub_project() + " release CW";
+		this->m_data->integrationPlan()->setSummary(summary);
+
         emit integrationPlanInitializedAfterCallToNextButton();
     }
 }

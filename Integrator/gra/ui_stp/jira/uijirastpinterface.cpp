@@ -5,6 +5,10 @@ UIJiraStpInterface::UIJiraStpInterface(Data *d, QWidget *parent)
 {
 	ui.setupUi(this);
 	this->m_data = d;
+	this->m_html_out = this->m_data->getHTMLCode();
+
+	this->m_jira_script_ececutor = new DefaultJiraScriptExecutor(this->m_data, this);
+	
 
 	QString font_name("Consolas");
 
@@ -78,12 +82,22 @@ void UIJiraStpInterface::handleCloseButton()
 void UIJiraStpInterface::handleJiraTicketButton()
 {
 	qDebug() << "handleJiraTicketButton";
+    bool result = this->m_jira_script_ececutor->createSPTicket();
+	if(result)
+	{
+		qDebug() << "STP script ok";
+	}
+	else
+	{
+		qDebug() << "STP script NOK";
+	}
+	
 }
 
 void UIJiraStpInterface::handlePrintHtmlCodeButton()
 {
-	qDebug() << "handlePrintHtmlCodeButton";
-	this->m_output_text_from_jira->append(this->m_data->getHTMLCode());
+	//qDebug() << "handlePrintHtmlCodeButton";
+	this->m_output_text_from_jira->append(this->m_html_out);
 }
 
 void UIJiraStpInterface::connects()
@@ -91,6 +105,10 @@ void UIJiraStpInterface::connects()
 	connect(this->m_close_window_button, SIGNAL(released()), this, SLOT(handleCloseButton()));
 	connect(this->m_create_jira_ticket_button, SIGNAL(released()), this, SLOT(handleJiraTicketButton()));
 	connect(this->m_print_HTML_code_button, SIGNAL(released()), this, SLOT(handlePrintHtmlCodeButton()));
+	//jira
+	connect(this->m_jira_script_ececutor, SIGNAL(started()), this, SLOT(handleStartedSTPCreation()));
+	connect(this->m_jira_script_ececutor, SIGNAL(finished()), this, SLOT(handleFinischedSTPCreation()));
+	connect(this->m_jira_script_ececutor, SIGNAL(integrationPlanNotVerified()), this, SLOT(handleIntegrationPlanNotVerified()));
 }
 
 bool UIJiraStpInterface::checkInputData()
@@ -101,4 +119,19 @@ bool UIJiraStpInterface::checkInputData()
 	}
 	
 	return true;
+}
+
+void UIJiraStpInterface::handleStartedSTPCreation()
+{
+	qDebug() << "handleStartedSTPCreation";
+}
+
+void UIJiraStpInterface::handleFinischedSTPCreation()
+{
+	qDebug() << "handleFinischedSTPCreation";
+}
+
+void UIJiraStpInterface::handleIntegrationPlanNotVerified()
+{
+	qDebug() << "handleIntegrationPlanNotVerified";
 }

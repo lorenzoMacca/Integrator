@@ -10,6 +10,10 @@
 #include <QFont>
 #include <QDebug>
 #include "src/core/data/data.h"
+#include "src/core/jiraConnection/CreateJiraSPTInputFileCsv.h"
+#include "src/core/jiraConnection/JiraSPInputFileCsv.h"
+#include "src/core/jiraConnection/JiraScriptExecutor.h"
+#include "src/core/jiraConnection/DefaultjiraScriptExecutor.h"
 #include "ui_uijirastpinterface.h"
 
 class UIJiraStpInterface : public QMainWindow
@@ -24,6 +28,9 @@ public slots:
 	void handleCloseButton();
 	void handleJiraTicketButton();
 	void handlePrintHtmlCodeButton();
+	void handleStartedSTPCreation();
+	void handleFinischedSTPCreation();
+	void handleIntegrationPlanNotVerified();
 
 private:
 	Ui::UIJiraStpInterfaceClass ui;
@@ -33,6 +40,8 @@ private:
 	QPushButton *m_print_HTML_code_button;
 	QPushButton *m_create_jira_ticket_button;
 	QTextEdit *m_output_text_from_jira;
+	QString m_html_out;
+	JiraScriptExecutor *m_jira_script_ececutor;
 
 	bool checkInputData();
 
