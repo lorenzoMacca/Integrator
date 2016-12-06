@@ -109,6 +109,7 @@ void UIJiraStpInterface::connects()
 	connect(this->m_jira_script_ececutor, SIGNAL(started()), this, SLOT(handleStartedSTPCreation()));
 	connect(this->m_jira_script_ececutor, SIGNAL(finished()), this, SLOT(handleFinischedSTPCreation()));
 	connect(this->m_jira_script_ececutor, SIGNAL(integrationPlanNotVerified()), this, SLOT(handleIntegrationPlanNotVerified()));
+    connect(this->m_jira_script_ececutor->getProcessSTP(),SIGNAL (readyReadStandardOutput()), this, SLOT(handleOutputProcess()));
 }
 
 bool UIJiraStpInterface::checkInputData()
@@ -134,4 +135,11 @@ void UIJiraStpInterface::handleFinischedSTPCreation()
 void UIJiraStpInterface::handleIntegrationPlanNotVerified()
 {
 	qDebug() << "handleIntegrationPlanNotVerified";
+}
+
+void UIJiraStpInterface::handleOutputProcess()
+{
+    const QByteArray qba = this->m_jira_script_ececutor->getProcessSTP()->readAllStandardOutput();
+    QString s(qba);
+    this->m_output_text_from_jira->append(s);
 }

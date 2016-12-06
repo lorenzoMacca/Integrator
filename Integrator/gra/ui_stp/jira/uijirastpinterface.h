@@ -31,6 +31,7 @@ public slots:
 	void handleStartedSTPCreation();
 	void handleFinischedSTPCreation();
 	void handleIntegrationPlanNotVerified();
+    void handleOutputProcess();
 
 private:
 	Ui::UIJiraStpInterfaceClass ui;
